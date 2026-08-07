@@ -6,12 +6,6 @@ const borders = `solid 2px ${cores.rosa}`;
 
 export const Container = styled.div`
     margin-bottom: 48px;
-`
-
-export const Card = styled.section`
-    border-bottom: ${borders};
-    border-left: ${borders};
-    border-right: ${borders};
     position: relative;
 
     ${TagContainer} {
@@ -20,6 +14,12 @@ export const Card = styled.section`
         left: 8px;
         bottom: 8px;
     }
+`
+
+export const Card = styled.section`
+    border-bottom: ${borders};
+    border-left: ${borders};
+    border-right: ${borders};
 `
 
 export const Title = styled.h2`
