@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { cores } from "../../styles"
-import { TagContainer } from "../Tag/styles";
+import { TagButton, TagContainer } from "../Tag/styles";
 
 const borders = `solid 2px ${cores.rosa}`;
 
@@ -8,11 +8,20 @@ export const Container = styled.div`
     margin-bottom: 48px;
     position: relative;
 
-    ${TagContainer} {
+    ${TagButton} {
         position: absolute;
-        display: inline-block;
         left: 8px;
         bottom: 8px;
+    }
+`
+
+export const Infos = styled.div`
+    position: absolute;
+    top: 8px;
+    right: 8px;
+
+    ${TagContainer} {
+        margin-left: 8px;
     }
 `
 
