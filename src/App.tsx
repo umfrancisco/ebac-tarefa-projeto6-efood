@@ -12,6 +12,22 @@ const routes = createBrowserRouter([
         <ProductsList />
       </>
     )
+  },
+  {
+    path: "/sushi",
+    element: (
+      <>
+        <div>!! Hioki Sushi !!</div>
+      </>
+    )
+  },
+  {
+    path: "/macarrao",
+    element: (
+      <>
+        <div>!! La Dolce Vita Trattoria !!</div>
+      </>
+    )
   }
 ])
 

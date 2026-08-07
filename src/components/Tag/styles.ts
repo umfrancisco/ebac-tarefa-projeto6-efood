@@ -1,11 +1,17 @@
 import styled from "styled-components"
 import { cores } from "../../styles"
 import type { Props } from "."
+import { Link } from "react-router-dom"
 
 const backgroundColor = cores.rosa
 const textColor = cores.branco
 const displayTipe = "inline-block"
 const paddingSize = "4px 6px";
+
+export const TagLink = styled(Link)`
+    text-decoration: none;
+    color: ${textColor};
+`
 
 export const TagContainer = styled.div<Props>`
     background-color: ${backgroundColor};

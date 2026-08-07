@@ -7,19 +7,20 @@ type Props = {
     description: string
     buttonTag: string
     infos: string[]
+    path: string
 }
 
-const Product = ({ imgUrl, title, description, buttonTag, infos }: Props) => (
+const Product = ({ imgUrl, title, description, buttonTag, infos, path }: Props) => (
 
     <Container>
         <BackgroundImg style={{ backgroundImage: `url(${imgUrl})` }} />
         <Infos>
-            {infos.map(info => <Tag key={info} type="top" children={info} />)}
+            {infos.map(info => <Tag key={info} type="top" children={info} path={path} />)}
         </Infos>
         <Card>
             <Title>{title}</Title>
             <Text>{description}</Text>
-            <Tag type="bottom" children={buttonTag} />
+            <Tag type="bottom" path={path} children={buttonTag} />
         </Card>
     </Container>
 )
