@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import backgroundImg from '../../assets/images/Hero.png';
+import styled from "styled-components"
+import backgroundImg from "../../assets/images/Hero.png"
 
 export const HeaderBar = styled.header`
     background-color: red;

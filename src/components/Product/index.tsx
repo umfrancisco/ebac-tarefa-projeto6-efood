@@ -1,18 +1,21 @@
-import { BackgroundImg, Card, Container } from "./styles"
+import Tag from "../Tag"
+import { BackgroundImg, Card, Container, Title, Text } from "./styles"
 
 type Props = {
     imgUrl: string
+    title: string
+    description: string
+    buttonTag: string
 }
 
-const Product = ({ imgUrl }: Props) => (
+const Product = ({ imgUrl, title, description, buttonTag }: Props) => (
 
     <Container>
         <BackgroundImg style={{ backgroundImage: `url(${imgUrl})` }} />
         <Card>
-            <h2>titulo</h2>
-            <p>
-                descrição
-            </p>
+            <Title>{title}</Title>
+            <Text>{description}</Text>
+            <Tag children={buttonTag} />
         </Card>
     </Container>
 )

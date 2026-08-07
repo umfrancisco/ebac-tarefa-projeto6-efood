@@ -1,5 +1,5 @@
 import { HeaderBar } from "./styles"
-import logo from '../../assets/images/logo.svg';
+import logo from "../../assets/images/logo.svg"
 
 const Header = () => (
     <HeaderBar>
