@@ -32,9 +32,22 @@ export const Card = styled.section`
     border-right: ${borders};
 `
 
+export const TitleContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+
+    div {
+        display: flex;
+        align-items: center;
+    }
+`
+
 export const Title = styled.h2`
-    padding-top: 8px;
-    padding-left: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 8px;
 `
 
 export const Text = styled.p`
@@ -47,7 +60,6 @@ export const Text = styled.p`
 `
 
 export const BackgroundImg = styled.div`
-    background-color: red;
     width: 100%;
     height: 217px;
 `

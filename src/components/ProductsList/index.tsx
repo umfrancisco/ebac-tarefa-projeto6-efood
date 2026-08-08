@@ -17,6 +17,7 @@ const ProductsList = ({ restaurants }: Props) => (
                     path={restaurant.path}
                     title={restaurant.title}
                     description={restaurant.description}
+                    review={restaurant.review}
                 />
             ))}
         </List>

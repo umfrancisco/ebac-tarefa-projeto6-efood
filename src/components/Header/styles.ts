@@ -3,7 +3,6 @@ import backgroundImg from "../../assets/images/Hero.png"
 import { cores } from "../../styles"
 
 export const HeaderBar = styled.header`
-    background-color: red;
     background-image: url(${backgroundImg});
 `
 
