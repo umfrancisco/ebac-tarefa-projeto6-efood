@@ -1,4 +1,4 @@
-import Product from "../Product"
+import Shop from "../Shop"
 import { List } from "./styles"
 import type Restaurant from "../../models/Restaurant"
 
@@ -6,11 +6,11 @@ export type Props = {
     restaurants: Restaurant[]
 }
 
-const ProductsList = ({ restaurants }: Props) => (
+const ShopList = ({ restaurants }: Props) => (
     <div className="container">
         <List>
             {restaurants.map(restaurant => (
-                <Product
+                <Shop
                     key={restaurant.id}
                     imgUrl={restaurant.imgUrl}
                     infos={restaurant.infos}
@@ -24,4 +24,4 @@ const ProductsList = ({ restaurants }: Props) => (
     </div>
 )
 
-export default ProductsList
+export default ShopList

@@ -11,7 +11,7 @@ type Props = {
     review: number
 }
 
-const Product = ({ imgUrl, title, description, infos, path, review }: Props) => (
+const Shop = ({ imgUrl, title, description, infos, path, review }: Props) => (
 
     <Container>
         <BackgroundImg style={{ backgroundImage: `url(${imgUrl})` }} />
@@ -30,6 +30,6 @@ const Product = ({ imgUrl, title, description, infos, path, review }: Props) => 
             <Tag path={path} />
         </Card>
     </Container>
-)
+) 
 
-export default Product
+export default Shop

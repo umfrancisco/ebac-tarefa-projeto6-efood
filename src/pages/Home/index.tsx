@@ -1,5 +1,5 @@
 import Header from "../../components/Header"
-import ProductsList from "../../components/ProductsList"
+import ShopList from "../../components/ShopList"
 import type Restaurant from "../../models/Restaurant"
 import sushi from "../../assets/images/sushi.png"
 import macarrao from "../../assets/images/macarrao.png"
@@ -29,7 +29,7 @@ const restaurants: Restaurant[] = [
 const Home = () => (
     <>
         <Header isHome={true} />
-        <ProductsList restaurants={restaurants} />
+        <ShopList restaurants={restaurants} />
     </>
 )
 
