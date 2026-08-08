@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { cores } from "../../styles"
-import { TagButton, TagInfo } from "../Tag/styles";
+import { TagButton, TagInfo } from "../Tag/styles"
 
 const borders = `solid 2px ${cores.rosa}`;
 
