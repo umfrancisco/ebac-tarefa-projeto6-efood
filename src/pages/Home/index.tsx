@@ -23,6 +23,42 @@ const restaurants: Restaurant[] = [
         title: "La Dolce Vita Trattoria",
         description: "A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!",
         review: 4.6
+    },
+    {
+        id: 3,
+        imgUrl: macarrao,
+        infos: ["Italiana"],
+        path: "/restaurant",
+        title: "La Dolce Vita Trattoria",
+        description: "A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!",
+        review: 4.6
+    },
+    {
+        id: 4,
+        imgUrl: macarrao,
+        infos: ["Italiana"],
+        path: "/restaurant",
+        title: "La Dolce Vita Trattoria",
+        description: "A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!",
+        review: 4.6
+    },
+    {
+        id: 5,
+        imgUrl: macarrao,
+        infos: ["Italiana"],
+        path: "/restaurant",
+        title: "La Dolce Vita Trattoria",
+        description: "A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!",
+        review: 4.6
+    },
+    {
+        id: 6,
+        imgUrl: macarrao,
+        infos: ["Italiana"],
+        path: "/restaurant",
+        title: "La Dolce Vita Trattoria",
+        description: "A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!",
+        review: 4.6
     }
 ]
 
