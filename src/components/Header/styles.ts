@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import backgroundImg from "../../assets/images/Hero.png"
+import { cores } from "../../styles"
 
 export const HeaderBar = styled.header`
     background-color: red;
@@ -17,4 +18,25 @@ export const Container = styled.div`
 export const Title = styled.h2`
     padding-top: 138px;
     font-size: 36px;
+`
+
+export const RestaurantContainer = styled.div`
+    margin: 0 auto;
+    max-width: 1024px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 64px;
+    padding-top: 40px;
+
+    h2 {
+        font-size: 18px;
+    }
+
+    a {
+        text-decoration: none;
+        color: ${cores.rosa};
+    }
 `

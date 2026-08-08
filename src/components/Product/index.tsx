@@ -5,12 +5,11 @@ type Props = {
     imgUrl: string
     title: string
     description: string
-    buttonTag: string
     infos: string[]
     path: string
 }
 
-const Product = ({ imgUrl, title, description, buttonTag, infos, path }: Props) => (
+const Product = ({ imgUrl, title, description, infos, path }: Props) => (
 
     <Container>
         <BackgroundImg style={{ backgroundImage: `url(${imgUrl})` }} />
@@ -20,7 +19,7 @@ const Product = ({ imgUrl, title, description, buttonTag, infos, path }: Props) 
         <Card>
             <Title>{title}</Title>
             <Text>{description}</Text>
-            <Tag path={path} children={buttonTag} />
+            <Tag path={path} />
         </Card>
     </Container>
 )

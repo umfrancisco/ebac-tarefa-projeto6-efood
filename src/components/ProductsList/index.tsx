@@ -10,9 +10,9 @@ const ProductsList = ({ restaurants }: Props) => (
     <div className="container">
         <List>
             {restaurants.map(restaurant => (
-                <Product 
-                    imgUrl={restaurant.imgUrl} 
-                    buttonTag={restaurant.buttonTag}
+                <Product
+                    key={restaurant.id}
+                    imgUrl={restaurant.imgUrl}
                     infos={restaurant.infos}
                     path={restaurant.path}
                     title={restaurant.title}
