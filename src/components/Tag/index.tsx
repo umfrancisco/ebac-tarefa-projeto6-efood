@@ -1,22 +1,21 @@
 import type { ReactNode } from "react"
-import { TagContainer, TagButton, TagLink } from "./styles"
+import { TagInfo, TagButton, TagLink } from "./styles"
 
 export type Props = {
-    type: string
     children: ReactNode
-    path: string
+    path?: string
 }
 
-const Tag = ({ children, type, path }: Props) => {
-    if (type === "bottom") {
+const Tag = ({ children, path }: Props) => {
+    if (path) {
         return (
-            <TagButton path={path} type={type}>
+            <TagButton path={path}>
                 <TagLink to={path}>{children}</TagLink>
             </TagButton>
         )
     }
     return (
-        <TagContainer path="" type={type}>{children}</TagContainer>
+        <TagInfo>{children}</TagInfo>
     )
 }
 

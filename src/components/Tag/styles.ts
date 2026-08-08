@@ -13,7 +13,7 @@ export const TagLink = styled(Link)`
     color: ${textColor};
 `
 
-export const TagContainer = styled.div<Props>`
+export const TagInfo = styled.div<Props>`
     background-color: ${backgroundColor};
     color: ${textColor};
     display: ${displayTipe};

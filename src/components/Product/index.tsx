@@ -15,12 +15,12 @@ const Product = ({ imgUrl, title, description, buttonTag, infos, path }: Props) 
     <Container>
         <BackgroundImg style={{ backgroundImage: `url(${imgUrl})` }} />
         <Infos>
-            {infos.map(info => <Tag key={info} type="top" children={info} path={path} />)}
+            {infos.map(info => <Tag key={info} children={info} />)}
         </Infos>
         <Card>
             <Title>{title}</Title>
             <Text>{description}</Text>
-            <Tag type="bottom" path={path} children={buttonTag} />
+            <Tag path={path} children={buttonTag} />
         </Card>
     </Container>
 )

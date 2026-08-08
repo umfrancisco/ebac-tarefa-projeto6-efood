@@ -1,12 +1,12 @@
-import { HeaderBar } from "./styles"
+import { Container, HeaderBar, Title } from "./styles"
 import logo from "../../assets/images/logo.svg"
 
 const Header = () => (
     <HeaderBar>
-        <div>
+        <Container>
             <img src={logo} alt="logo" />
-            <h2>Viva experiências gastronômicas <br /> no conforto da sua casa</h2>
-        </div>
+            <Title>Viva experiências gastronômicas <br /> no conforto da sua casa</Title>
+        </Container>
     </HeaderBar>
 )
 

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { cores } from "../../styles"
-import { TagButton, TagContainer } from "../Tag/styles";
+import { TagButton, TagInfo } from "../Tag/styles";
 
 const borders = `solid 2px ${cores.rosa}`;
 
@@ -20,12 +20,13 @@ export const Infos = styled.div`
     top: 8px;
     right: 8px;
 
-    ${TagContainer} {
+    ${TagInfo} {
         margin-left: 8px;
     }
 `
 
 export const Card = styled.section`
+    background-color: ${cores.branco};
     border-bottom: ${borders};
     border-left: ${borders};
     border-right: ${borders};
