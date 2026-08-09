@@ -1,5 +1,5 @@
 import { Container, HeaderBar, RestaurantContainer, Title } from "./styles"
-import logo from "../../assets/images/logo.svg"
+import logo from "../../assets/icons/logo.svg"
 import { Link } from "react-router-dom"
 
 export type Props = {

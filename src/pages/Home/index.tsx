@@ -3,6 +3,7 @@ import ShopList from "../../components/ShopList"
 import type Restaurant from "../../models/Restaurant"
 import sushi from "../../assets/images/sushi.png"
 import macarrao from "../../assets/images/macarrao.png"
+import Footer from "../../components/Footer"
 
 
 const restaurants: Restaurant[] = [
@@ -66,6 +67,7 @@ const Home = () => (
     <>
         <Header isHome={true} />
         <ShopList restaurants={restaurants} />
+        <Footer />
     </>
 )
 

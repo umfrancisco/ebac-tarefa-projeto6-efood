@@ -1,8 +1,8 @@
 import Product from "../Product"
-import { List } from "./styles"
+import { Container, List } from "./styles"
 
 const ProductsList = () => (
-    <div className="container">
+    <Container>
         <List>
             <Product />
             <Product />
@@ -11,7 +11,7 @@ const ProductsList = () => (
             <Product />
             <Product />
         </List>
-    </div>
+    </Container>
 )
 
 
