@@ -52,17 +52,22 @@ export const Modal = styled.div`
     max-width: 1024px;
     width: 100%;
     top: 0;
-    margin-top: 320px;
+    margin-top: 210px;
     z-index: 1;
 `
 
 export const ModalContent = styled.div`
-    display: flex;
+    display: none;
     position: relative;
+
+    &.visible {
+        display: flex;
+    }
 `
 
 export const CloseButton = styled.div`
     color: ${cores.branco};
+    cursor: pointer;
     margin-top: 8px;
     margin-right: 8px;
     position: absolute;
@@ -73,8 +78,13 @@ export const CloseButton = styled.div`
 export const Overlay = styled.div`
     background-color: rgba(0,0,0,0.8);
     position: fixed;
+    display: none;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+
+    &.visible {
+        display: flex;
+    }
 `
