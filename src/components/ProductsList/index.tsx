@@ -38,7 +38,7 @@ const ProductsList = () => {
                     <Product onClick={() => setModalIsOpen(true)}/>
                 </List>
             </Container>
-            <Overlay className={modalIsOpen ? "visible" : ""}/>
+            <Overlay className={modalIsOpen ? "visible" : ""} onClick={() => setModalIsOpen(false)}/>
         </>
     )
 }
