@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { cores } from "../../styles"
 
 export const Container = styled.div`
     max-width: 1024px;
@@ -13,4 +14,67 @@ export const List = styled.ul`
     column-gap: 32px;
     margin-top: 56px;
     margin-botttom: 120px;
+`
+
+export const Title = styled.h4`
+    font-size: 18px;
+    padding-top: 32px;
+    color: ${cores.branco};
+`
+
+export const Text = styled.p`
+    font-size: 14px;
+    line-height: 22px;
+    padding-top: 16px;
+    padding-right: 32px;
+    color: ${cores.branco};
+`
+
+export const Button = styled.button`
+    background-color: ${cores.branco};
+    color: ${cores.rosa};
+    padding: 4px 6px;
+    margin-top: 16px;
+    font-weight: bold;
+    border: none;
+`
+
+export const Image = styled.img`
+    margin: 32px;
+    height: 280px;
+    width: 280px;
+    object-fit: cover;
+`
+
+export const Modal = styled.div`
+    background-color: ${cores.rosa};
+    position: fixed;
+    max-width: 1024px;
+    width: 100%;
+    top: 0;
+    margin-top: 320px;
+    z-index: 1;
+`
+
+export const ModalContent = styled.div`
+    display: flex;
+    position: relative;
+`
+
+export const CloseButton = styled.div`
+    color: ${cores.branco};
+    margin-top: 8px;
+    margin-right: 8px;
+    position: absolute;
+    top: 0;
+    right: 0;
+`
+
+export const Overlay = styled.div`
+    background-color: rgba(0,0,0,0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 `
