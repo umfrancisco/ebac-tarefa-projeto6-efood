@@ -11,7 +11,7 @@ type Props = {
     review: number
 }
 
-const Shop = ({ imgUrl, title, description, infos, path, review }: Props) => (
+const Restaurant = ({ imgUrl, title, description, infos, path, review }: Props) => (
 
     <Container>
         <BackgroundImg style={{ backgroundImage: `url(${imgUrl})` }} />
@@ -32,4 +32,4 @@ const Shop = ({ imgUrl, title, description, infos, path, review }: Props) => (
     </Container>
 ) 
 
-export default Shop
+export default Restaurant

@@ -1,16 +1,16 @@
-import Shop from "../Shop"
+import Restautant from "../Restaurant"
 import { List } from "./styles"
-import type Restaurant from "../../models/Restaurant"
+import type RestaurantClass from "../../models/Restaurant"
 
 export type Props = {
-    restaurants: Restaurant[]
+    restaurants: RestaurantClass[]
 }
 
-const ShopList = ({ restaurants }: Props) => (
+const RestaurantList = ({ restaurants }: Props) => (
     <div className="container">
         <List>
             {restaurants.map(restaurant => (
-                <Shop
+                <Restautant
                     key={restaurant.id}
                     imgUrl={restaurant.imgUrl}
                     infos={restaurant.infos}
@@ -24,4 +24,4 @@ const ShopList = ({ restaurants }: Props) => (
     </div>
 )
 
-export default ShopList
+export default RestaurantList
