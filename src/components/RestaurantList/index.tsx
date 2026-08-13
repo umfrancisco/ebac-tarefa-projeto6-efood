@@ -1,27 +1,42 @@
+import type { Restaurant } from "../../pages/Home"
 import Restautant from "../Restaurant"
 import { List } from "./styles"
-import type RestaurantClass from "../../models/Restaurant"
 
 export type Props = {
-    restaurants: RestaurantClass[]
+    restaurants: Restaurant[]
 }
 
-const RestaurantList = ({ restaurants }: Props) => (
-    <div className="container">
-        <List>
-            {restaurants.map(restaurant => (
-                <Restautant
-                    key={restaurant.id}
-                    imgUrl={restaurant.imgUrl}
-                    infos={restaurant.infos}
-                    path={restaurant.path}
-                    title={restaurant.title}
-                    description={restaurant.description}
-                    review={restaurant.review}
-                />
-            ))}
-        </List>
-    </div>
-)
+const RestaurantList = ({ restaurants }: Props) => {
+
+    const getTags = (restaurant: Restaurant) => {
+        const tags = []
+
+        if (restaurant.destacado) {
+            tags.push("Em destaque")
+        }
+        if (restaurant.tipo) {
+            tags.push(restaurant.tipo)
+        }
+        return tags
+    }
+
+    return (
+        <div className="container">
+            <List>
+                {restaurants.map(restaurant => (
+                    <Restautant
+                        key={restaurant.id}
+                        id={restaurant.id}
+                        imgUrl={restaurant.capa}
+                        infos={getTags(restaurant)}
+                        title={restaurant.titulo}
+                        description={restaurant.descricao}
+                        review={restaurant.avaliacao}
+                    />
+                ))}
+            </List>
+        </div>
+    )
+}
 
 export default RestaurantList

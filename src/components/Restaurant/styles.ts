@@ -27,6 +27,7 @@ export const Infos = styled.div`
 
 export const Card = styled.section`
     background-color: ${cores.branco};
+    height: 220px;
     border-bottom: ${borders};
     border-left: ${borders};
     border-right: ${borders};
@@ -62,4 +63,6 @@ export const Text = styled.p`
 export const BackgroundImg = styled.div`
     width: 100%;
     height: 217px;
+    background-repeat: no-repeat;
+    background-size: cover;
 `

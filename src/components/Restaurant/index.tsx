@@ -3,15 +3,15 @@ import { BackgroundImg, Card, Container, TitleContainer, Title, Text, Infos } fr
 import star from "../../assets/images/star.svg"
 
 type Props = {
+    id: number
     imgUrl: string
     title: string
     description: string
     infos: string[]
-    path: string
     review: number
 }
 
-const Restaurant = ({ imgUrl, title, description, infos, path, review }: Props) => (
+const Restaurant = ({ id, imgUrl, title, description, infos, review }: Props) => (
 
     <Container>
         <BackgroundImg style={{ backgroundImage: `url(${imgUrl})` }} />
@@ -27,7 +27,7 @@ const Restaurant = ({ imgUrl, title, description, infos, path, review }: Props) 
                 </div>
             </TitleContainer>
             <Text>{description}</Text>
-            <Tag path={path} />
+            <Tag path={`/restaurant/${id}`} />
         </Card>
     </Container>
 ) 
