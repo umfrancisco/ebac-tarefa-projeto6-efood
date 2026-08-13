@@ -1,18 +1,19 @@
 import { Container, Image, Title, Text, Button, ButtonContainer } from "./styles"
-import pizza from "../../assets/images/pizza.png"
+import type { Cardapio } from "../../pages/Home"
 
 type Props = {
+    prato: Cardapio
     onClick: () => void
 }
 
-const Product = ({ onClick }: Props) => {
+const Product = ({ onClick, prato }: Props) => {
 
     return (
         <Container>
             <div>
-                <Image src={pizza} alt="" />
-                <Title>Pizza Marguerita</Title>
-                <Text>A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!</Text>
+                <Image src={prato.foto} alt={prato.nome} />
+                <Title>{prato.nome}</Title>
+                <Text>{prato.descricao}</Text>
                 <ButtonContainer>
                     <Button onClick={onClick}>Adicionar ao carrinho</Button>
                 </ButtonContainer>

@@ -1,13 +1,23 @@
-import img from "../../assets/images/background-img.png"
-import { Container, MainTitle, SecondaryTitle } from "./styles"
+import type { Restaurant } from "../../pages/Home"
+import { Container, MainTitle, Overlay, SecondaryTitle } from "./styles"
 
-const Banner = () => (
-    <Container style={{ backgroundImage: `url(${img})` }}>
-        <div className="container">
-            <SecondaryTitle>Italiana</SecondaryTitle>
-            <MainTitle>La Dolce Vita Trattoria</MainTitle>
-        </div>
-    </Container>
-)
+type Props = {
+    restaurant?: Restaurant
+}
+
+const Banner = ({ restaurant }: Props) => {
+
+    return (
+        <>
+            <Container style={{ backgroundImage: `url(${restaurant?.capa})` }}>
+                <Overlay />
+                <div className="container">
+                    <SecondaryTitle>{restaurant?.tipo}</SecondaryTitle>
+                    <MainTitle>{restaurant?.titulo}</MainTitle>
+                </div>
+            </Container>
+        </>
+    )
+}
 
 export default Banner

@@ -3,8 +3,13 @@ import { Button, CloseButton, Container, Image, List, Modal, ModalContent, Overl
 import pizza from "../../assets/images/pizza2.png"
 import closeBtn from "../../assets/icons/close.svg"
 import { useState } from "react"
+import type { Cardapio } from "../../pages/Home"
 
-const ProductsList = () => {
+type Props = {
+    cardapio?: Cardapio[]
+}
+
+const ProductsList = ({ cardapio }: Props) => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
 
@@ -30,12 +35,9 @@ const ProductsList = () => {
                     </ModalContent>
                 </Modal>
                 <List>
-                    <Product onClick={() => setModalIsOpen(true)}/>
-                    <Product onClick={() => setModalIsOpen(true)}/>
-                    <Product onClick={() => setModalIsOpen(true)}/>
-                    <Product onClick={() => setModalIsOpen(true)}/>
-                    <Product onClick={() => setModalIsOpen(true)}/>
-                    <Product onClick={() => setModalIsOpen(true)}/>
+                    {cardapio?.map(prato => (
+                        <Product prato={prato} onClick={() => setModalIsOpen(true)}/>
+                    ))}
                 </List>
             </Container>
             <Overlay className={modalIsOpen ? "visible" : ""} onClick={() => setModalIsOpen(false)}/>
