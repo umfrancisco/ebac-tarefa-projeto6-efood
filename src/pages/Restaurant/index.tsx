@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 import type { Restaurant } from "../Home"
 
 
-const Restaurant = () => {
+const RestaurantComponent = () => {
 
     const [restaurant, setRestaurant] = useState<Restaurant>()
     const { id } = useParams()
@@ -29,4 +29,4 @@ const Restaurant = () => {
     )
 }
 
-export default Restaurant
+export default RestaurantComponent
