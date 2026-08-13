@@ -36,7 +36,7 @@ const ProductsList = ({ cardapio }: Props) => {
                 </Modal>
                 <List>
                     {cardapio?.map(prato => (
-                        <Product prato={prato} onClick={() => setModalIsOpen(true)}/>
+                        <Product key={prato.id} prato={prato} onClick={() => setModalIsOpen(true)}/>
                     ))}
                 </List>
             </Container>
