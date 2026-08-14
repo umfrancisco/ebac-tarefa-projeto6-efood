@@ -1,4 +1,4 @@
-import { Container, Image, Title, Text, Button, ButtonContainer } from "./styles"
+import { Card, Image, Title, Text, Button, ButtonContainer } from "./styles"
 import type { Cardapio } from "../../pages/Home"
 
 type Props = {
@@ -8,17 +8,24 @@ type Props = {
 
 const Product = ({ onClick, prato }: Props) => {
 
+    const getDescription = (description: string) => {
+        if (description.length > 95) {
+            return description.slice(0, 92)+" ..."
+        }
+        return description
+    }
+
     return (
-        <Container>
+        <Card>
             <div>
                 <Image src={prato.foto} alt={prato.nome} />
                 <Title>{prato.nome}</Title>
-                <Text>{prato.descricao}</Text>
+                <Text>{getDescription(prato.descricao)}</Text>
                 <ButtonContainer>
                     <Button onClick={onClick}>Adicionar ao carrinho</Button>
                 </ButtonContainer>
             </div>
-        </Container>
+        </Card>
     )
 }
 

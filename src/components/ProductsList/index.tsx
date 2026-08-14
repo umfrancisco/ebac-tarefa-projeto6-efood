@@ -1,6 +1,5 @@
 import Product from "../Product"
 import { Button, CloseButton, Container, Image, List, Modal, ModalContent, Overlay, Text, Title } from "./styles"
-import pizza from "../../assets/images/pizza2.png"
 import closeBtn from "../../assets/icons/close.svg"
 import { useState } from "react"
 import type { Cardapio } from "../../pages/Home"
@@ -12,6 +11,24 @@ type Props = {
 const ProductsList = ({ cardapio }: Props) => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
+    const [selectedProduct, setSelectedProduct] = useState<Cardapio | null>(null)
+    
+    function handleOpenModal(prato: Cardapio) {
+        setSelectedProduct(prato)
+        setModalIsOpen(true)
+    }
+
+    function handleCloseModal() {
+        setModalIsOpen(false)
+        setSelectedProduct(null)
+    }
+
+    const priceFormat = (price = 0) => {
+        return new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        }).format(price)
+    }
 
     return (
         <>
@@ -21,26 +38,26 @@ const ProductsList = ({ cardapio }: Props) => {
                         <CloseButton>
                             <img src={closeBtn} onClick={() => setModalIsOpen(false)}/>
                         </CloseButton>
-                        <Image src={pizza} alt="imagem de pizza" />
+                        <Image src={selectedProduct?.foto} alt={selectedProduct?.nome} />
                         <div>
-                            <Title>Pizza Marguerita</Title>
+                            <Title>{selectedProduct?.nome}</Title>
                             <Text>
-                                A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabor inigualável. Ela é feita com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.
+                                {selectedProduct?.descricao}
                             </Text>
                             <Text>
-                                Serve: de 2 a 3 pessoas
+                                {selectedProduct?.porcao}
                             </Text>
-                            <Button>Adicionar ao carrinho - R$ 60,90</Button>
+                            <Button>Adicionar ao carrinho - {priceFormat(selectedProduct?.preco)}</Button>
                         </div>
                     </ModalContent>
                 </Modal>
                 <List>
                     {cardapio?.map(prato => (
-                        <Product key={prato.id} prato={prato} onClick={() => setModalIsOpen(true)}/>
+                        <Product key={prato.id} prato={prato} onClick={() => handleOpenModal(prato)}/>
                     ))}
                 </List>
             </Container>
-            <Overlay className={modalIsOpen ? "visible" : ""} onClick={() => setModalIsOpen(false)}/>
+            <Overlay className={modalIsOpen ? "visible" : ""} onClick={() => handleCloseModal()}/>
         </>
     )
 }

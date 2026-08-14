@@ -1,9 +1,10 @@
 import styled from "styled-components"
 import { cores } from "../../styles"
 
-export const Container = styled.div`
+export const Card = styled.div`
     background-color: ${cores.rosa};
     margin-bottom: 32px;
+    position: relative;
 
     div {
         padding: 8px;
@@ -19,20 +20,25 @@ export const Image = styled.img`
 
 export const Title = styled.h2`
     color: ${cores.branco};
+    font-size: 16px;
     margin-bottom: 8px;
 `
 
 export const Text = styled.p`
     margin-bottom: 8px;
+    padding-bottom: 48px;
+    font-size: 14px;
     line-height: 22px;
     color: ${cores.branco};
 `
 
 export const ButtonContainer = styled.div`
     background-color: ${cores.rosaClaro};
-    padding: 24px 0;
+    width: 95%;
+    bottom: 8px;
     text-align: center;
     cursor: pointer;
+    position: absolute;
 `
 
 export const Button = styled.a`
