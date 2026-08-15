@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import Header from "../../components/Header"
 import Banner from "../../components/Banner"
-import ProductsList from "../../components/ProductsList"
+import ProductList from "../../components/ProductList"
 import Footer from "../../components/Footer"
 import { useEffect, useState } from "react"
 import type { Restaurant } from "../Home"
@@ -23,7 +23,7 @@ const RestaurantComponent = () => {
         <>
             <Header isHome={false} />
             <Banner restaurant={restaurant} />
-            <ProductsList cardapio={restaurant?.cardapio}/>
+            <ProductList cardapio={restaurant?.cardapio}/>
             <Footer />
         </>
     )

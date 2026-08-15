@@ -1,8 +1,8 @@
 import { Card, Image, Title, Text, Button, ButtonContainer } from "./styles"
-import type { Cardapio } from "../../pages/Home"
+import type { Prato } from "../../pages/Home"
 
 type Props = {
-    prato: Cardapio
+    prato: Prato
     onClick: () => void
 }
 

@@ -2,18 +2,18 @@ import Product from "../Product"
 import { Button, CloseButton, Container, Image, List, Modal, ModalContent, Overlay, Text, Title } from "./styles"
 import closeBtn from "../../assets/icons/close.svg"
 import { useState } from "react"
-import type { Cardapio } from "../../pages/Home"
+import type { Prato } from "../../pages/Home"
 
 type Props = {
-    cardapio?: Cardapio[]
+    cardapio?: Prato[]
 }
 
 const ProductsList = ({ cardapio }: Props) => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
-    const [selectedProduct, setSelectedProduct] = useState<Cardapio | null>(null)
+    const [selectedProduct, setSelectedProduct] = useState<Prato | null>(null)
     
-    function handleOpenModal(prato: Cardapio) {
+    function handleOpenModal(prato: Prato) {
         setSelectedProduct(prato)
         setModalIsOpen(true)
     }

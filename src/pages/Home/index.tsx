@@ -3,7 +3,7 @@ import Footer from "../../components/Footer"
 import RestaurantList from "../../components/RestaurantList"
 import { useEffect, useState } from "react"
 
-export type Cardapio = {
+export type Prato = {
     id: number
     foto: string
     preco: number
@@ -20,7 +20,7 @@ export type Restaurant = {
     avaliacao: number
     descricao: string
     capa: string
-    cardapio: Cardapio[]
+    cardapio: Prato[]
 }
 
 
