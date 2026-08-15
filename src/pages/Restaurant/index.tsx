@@ -3,29 +3,28 @@ import Header from "../../components/Header"
 import Banner from "../../components/Banner"
 import ProductList from "../../components/ProductList"
 import Footer from "../../components/Footer"
-import { useEffect, useState } from "react"
-import type { Restaurant } from "../Home"
-
+import { useGetRestaurantByIdQuery } from "../../services/api"
 
 const RestaurantComponent = () => {
 
-    const [restaurant, setRestaurant] = useState<Restaurant>()
     const { id } = useParams()
+    const { data: restaurant } = useGetRestaurantByIdQuery(id!)
 
-    useEffect(() => {
-        fetch(`https://api-ebac.vercel.app/api/efood/restaurantes/${id}`)
-            .then(res => res.json())
-            .then(data => setRestaurant(data))
-    }, [])
-
+    if (restaurant) {
+        return (
+            <>
+                <Header isHome={false} />
+                <Banner restaurant={restaurant} />
+                <ProductList cardapio={restaurant?.cardapio}/>
+                <Footer />
+            </>
+        )
+    }
 
     return (
-        <>
-            <Header isHome={false} />
-            <Banner restaurant={restaurant} />
-            <ProductList cardapio={restaurant?.cardapio}/>
-            <Footer />
-        </>
+        <div>
+            <p>Carregando...</p>
+        </div>
     )
 }
 
