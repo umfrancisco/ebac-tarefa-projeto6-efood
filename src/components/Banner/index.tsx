@@ -5,7 +5,7 @@ type Props = {
     restaurant?: Restaurant
 }
 
-function Banner({ restaurant }: Props) {
+const Banner = ({ restaurant }: Props) => {
 
     return (
         <>

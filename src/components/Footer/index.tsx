@@ -4,7 +4,7 @@ import instagram from "../../assets/icons/instagram.svg"
 import facebook from "../../assets/icons/facebook.svg"
 import twitter from "../../assets/icons/twitter.svg"
 
-function Footer() {
+const Footer = () => {
 
     return (
         <Container>

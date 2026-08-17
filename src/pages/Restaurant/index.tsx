@@ -5,7 +5,7 @@ import ProductList from "../../components/ProductList"
 import Footer from "../../components/Footer"
 import { useGetRestaurantByIdQuery } from "../../services/api"
 
-function RestaurantComponent() {
+const RestaurantComponent = () => {
 
     const { id } = useParams()
     const { data: restaurant } = useGetRestaurantByIdQuery(id!)
