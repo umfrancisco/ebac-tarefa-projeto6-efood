@@ -8,7 +8,7 @@ type Props = {
     cardapio?: Prato[]
 }
 
-const ProductsList = ({ cardapio }: Props) => {
+function ProductsList({ cardapio }: Props) {
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const [selectedProduct, setSelectedProduct] = useState<Prato | null>(null)

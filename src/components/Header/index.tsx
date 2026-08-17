@@ -6,7 +6,7 @@ export type Props = {
     isHome?: boolean
 }
 
-const Header = ({ isHome }: Props) => {
+function Header({ isHome }: Props) {
 
     if (isHome) {
         return (

@@ -11,25 +11,27 @@ type Props = {
     review: number
 }
 
-const Restaurant = ({ id, imgUrl, title, description, infos, review }: Props) => (
+function Restaurant({ id, imgUrl, title, description, infos, review }: Props) {
 
-    <Container>
-        <BackgroundImg style={{ backgroundImage: `url(${imgUrl})` }} />
-        <Infos>
-            {infos.map(info => <Tag key={info} children={info} />)}
-        </Infos>
-        <Card>
-            <TitleContainer>
-                <Title>{title}</Title>
-                <div>
-                    <Title>{review}</Title>
-                    <img src={star} />
-                </div>
-            </TitleContainer>
-            <Text>{description}</Text>
-            <Tag path={`/restaurant/${id}`} />
-        </Card>
-    </Container>
-) 
+    return (
+        <Container>
+            <BackgroundImg style={{ backgroundImage: `url(${imgUrl})` }} />
+            <Infos>
+                {infos.map(info => <Tag key={info} children={info} />)}
+            </Infos>
+            <Card>
+                <TitleContainer>
+                    <Title>{title}</Title>
+                    <div>
+                        <Title>{review}</Title>
+                        <img src={star} />
+                    </div>
+                </TitleContainer>
+                <Text>{description}</Text>
+                <Tag path={`/restaurant/${id}`} />
+            </Card>
+        </Container>
+    )
+}
 
 export default Restaurant

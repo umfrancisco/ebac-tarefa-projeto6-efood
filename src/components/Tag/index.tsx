@@ -6,7 +6,7 @@ export type Props = {
     path?: string
 }
 
-const Tag = ({ children, path }: Props) => {
+function Tag({ children, path }: Props) {
     if (path) {
         return (
             <TagButton path={path}>

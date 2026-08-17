@@ -6,7 +6,7 @@ export type Props = {
     restaurants: Restaurant[]
 }
 
-const RestaurantList = ({ restaurants }: Props) => {
+function RestaurantList({ restaurants }: Props) {
 
     const getTags = (restaurant: Restaurant) => {
         const tags = []
