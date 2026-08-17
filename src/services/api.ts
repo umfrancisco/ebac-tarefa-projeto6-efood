@@ -3,7 +3,7 @@ import type { Restaurant } from "../pages/Home"
 
 const api = createApi({
     baseQuery: fetchBaseQuery({
-        baseUrl: "https://api-ebac.vercel.app/api/efood"
+        baseUrl: import.meta.env.VITE_API_URL
     }),
     endpoints: (builder) => ({
         getRestaurants: builder.query<Restaurant[], void>({
