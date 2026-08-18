@@ -1,8 +1,9 @@
-import { useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
 import { Container, HeaderBar, RestaurantContainer, Title } from "./styles"
 import logo from "../../assets/icons/logo.svg"
-import { Link } from "react-router-dom"
 import { open } from "../../store/reducers/cart"
+import type { RootReducer } from "../../store"
 
 export type Props = {
     isHome?: boolean
@@ -11,6 +12,7 @@ export type Props = {
 function Header({ isHome }: Props) {
 
     const dispatch = useDispatch()
+    const { items } = useSelector((state: RootReducer) => state.cart)
 
     const openCart = () => {
         dispatch(open())
@@ -31,7 +33,7 @@ function Header({ isHome }: Props) {
             <RestaurantContainer>
                 <h2><Link to="/">Restaurantes</Link></h2>
                 <img src={logo} alt="logo" />
-                <button onClick={openCart}>0 produto(s) no carrinho</button>
+                <button onClick={openCart}>{items.length} produto(s) no carrinho</button>
             </RestaurantContainer>
         </HeaderBar>
     )

@@ -1,14 +1,23 @@
+import { useState } from "react"
+import { useDispatch } from "react-redux"
 import Product from "../Product"
 import { Button, CloseButton, Container, Image, List, Modal, ModalContent, Overlay, Text, Title } from "./styles"
 import closeBtn from "../../assets/icons/close.svg"
-import { useState } from "react"
 import type { Prato } from "../../pages/Home"
+import { add, open } from "../../store/reducers/cart"
 
 type Props = {
     cardapio?: Prato[]
 }
 
 function ProductsList({ cardapio }: Props) {
+
+    const dispatch = useDispatch()
+    const addToCart = (prato: Prato) => {
+        dispatch(add(prato))
+        handleCloseModal()
+        dispatch(open())
+    }
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const [selectedProduct, setSelectedProduct] = useState<Prato | null>(null)
@@ -47,7 +56,9 @@ function ProductsList({ cardapio }: Props) {
                             <Text>
                                 {selectedProduct?.porcao}
                             </Text>
-                            <Button>Adicionar ao carrinho - {priceFormat(selectedProduct?.preco)}</Button>
+                            {selectedProduct && (
+                                <Button onClick={() => addToCart(selectedProduct)}>Adicionar ao carrinho - {priceFormat(selectedProduct?.preco)}</Button>
+                            )}
                         </div>
                     </ModalContent>
                 </Modal>
