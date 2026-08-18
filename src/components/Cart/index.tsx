@@ -1,16 +1,28 @@
 import { Button, CartContainer, CartItem, Overlay, Sidebar, TotalPrice, Infos } from "./styles"
-import pizza from "../../assets/images/pizza2.png"
 import { useDispatch, useSelector } from "react-redux"
 import type { RootReducer } from "../../store"
 import { close } from "../../store/reducers/cart"
 
 function Cart() {
 
-    const { isOpen } = useSelector((state: RootReducer) => state.cart)
+    const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
     const dispatch = useDispatch()
 
     const closeCart = () => {
         dispatch(close())
+    }
+
+    const priceFormat = (price = 0) => {
+        return new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        }).format(price)
+    }
+
+    const getTotalPrice = () => {
+        return items.reduce((total, item) => {
+            return total + (item.preco ?? 0)
+        }, 0)
     }
 
     return(
@@ -18,34 +30,20 @@ function Cart() {
             <Overlay onClick={closeCart}/>
             <Sidebar>
                 <ul>
-                    <CartItem>
-                        <img src={pizza} />
-                        <Infos>
-                            <p>Pizza Marguerita</p>
-                            <span>R$ 60,90</span>
-                        </Infos>
-                        <button />
-                    </CartItem>
-                    <CartItem>
-                        <img src={pizza} />
-                        <Infos>
-                            <p>Pizza Marguerita</p>
-                            <span>R$ 60,90</span>
-                        </Infos>
-                        <button />
-                    </CartItem>
-                    <CartItem>
-                        <img src={pizza} />
-                        <Infos>
-                            <p>Pizza Marguerita</p>
-                            <span>R$ 60,90</span>
-                        </Infos>
-                        <button />
-                    </CartItem>
+                    {items.map(item => (
+                        <CartItem key={item.id}>
+                            <img src={item.foto} />
+                            <Infos>
+                                <p>{item.nome}</p>
+                                <span>{priceFormat(item.preco)}</span>
+                            </Infos>
+                            <button />
+                        </CartItem>
+                    ))}
                 </ul>
                 <TotalPrice>
                     <p>Valor total</p>
-                    <p>R$ 182,70</p>
+                    <p>{priceFormat(getTotalPrice())}</p>
                 </TotalPrice>
                 <Button>Continuar com a entrega</Button>
             </Sidebar>
