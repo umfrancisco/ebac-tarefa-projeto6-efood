@@ -1,0 +1,89 @@
+import styled from "styled-components"
+import { cores } from "../../styles"
+import trashCan from "../../assets/icons/trash-can.svg"
+
+export const Overlay = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.7;
+`
+
+export const CartContainer = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1;
+
+    ul {
+        padding-top: 16px;
+    }
+`
+
+export const CartItem = styled.li`
+    display: flex;
+    padding: 8px;
+    margin: 16px 0;
+    background-color: ${cores.rosaClaro};
+    position: relative;
+
+    img {
+        height: 80px;
+        width: 80px;
+        object-fit: cover;
+    }
+
+    button {
+        background-image: url(${trashCan});
+        width: 16px;
+        height: 16px;
+        border: none;
+        background-color: transparent;
+        position: absolute;
+        right: 8px;
+        bottom: 8px;
+    }
+`
+
+export const Infos = styled.div`
+    margin-left: 8px;
+
+    p {
+        font-weight: bold;
+        padding-bottom: 16px;
+    }
+`
+
+export const TotalPrice = styled.div`
+    color: ${cores.rosaClaro};
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    margin: 16px 0;
+`
+
+export const Sidebar = styled.aside`
+    background-color: ${cores.rosa};
+    max-width: 360px;
+    width: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
+    z-index: 1;
+`
+
+export const Button = styled.button`
+    border: none;
+    background-color: ${cores.rosaClaro};
+    color: ${cores.rosa};
+    font-weight: bold;
+    max-width: 100%;
+    width: 100%;
+    padding: 4px 0;
+`

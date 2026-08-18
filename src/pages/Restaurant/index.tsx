@@ -4,6 +4,7 @@ import Banner from "../../components/Banner"
 import ProductList from "../../components/ProductList"
 import Footer from "../../components/Footer"
 import { useGetRestaurantByIdQuery } from "../../services/api"
+import Cart from "../../components/Cart"
 
 const RestaurantComponent = () => {
 
@@ -13,6 +14,7 @@ const RestaurantComponent = () => {
     if (restaurant) {
         return (
             <>
+                <Cart />
                 <Header isHome={false} />
                 <Banner restaurant={restaurant} />
                 <ProductList cardapio={restaurant?.cardapio}/>
