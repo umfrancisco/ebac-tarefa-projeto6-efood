@@ -43,17 +43,6 @@ export const CartItem = styled.li`
         width: 80px;
         object-fit: cover;
     }
-
-    button {
-        background-image: url(${trashCan});
-        width: 16px;
-        height: 16px;
-        border: none;
-        background-color: transparent;
-        position: absolute;
-        right: 8px;
-        bottom: 8px;
-    }
 `
 
 export const Infos = styled.div`
@@ -90,4 +79,16 @@ export const Button = styled.button`
     max-width: 100%;
     width: 100%;
     padding: 4px 0;
+`
+
+export const TrashCan = styled.button`
+    background-image: url(${trashCan});
+    width: 16px;
+    height: 16px;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    cursor: pointer;
 `

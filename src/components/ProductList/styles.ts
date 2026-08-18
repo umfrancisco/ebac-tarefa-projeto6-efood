@@ -37,6 +37,7 @@ export const Button = styled.button`
     margin-top: 16px;
     font-weight: bold;
     border: none;
+    cursor: pointer;
 `
 
 export const Image = styled.img`

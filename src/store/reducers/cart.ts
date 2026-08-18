@@ -23,6 +23,9 @@ const cartSlice = createSlice({
                 alert("O item já foi adicionado")
             }
         },
+        remove: (state, action: PayloadAction<number>) => {
+            state.items = state.items.filter(item => item.id !== action.payload)
+        },
         open: (state) => {
             state.isOpen = true
         },
@@ -32,5 +35,5 @@ const cartSlice = createSlice({
     }
 })
 
-export const { add, open, close } = cartSlice.actions
+export const { add, remove, open, close } = cartSlice.actions
 export default cartSlice.reducer
