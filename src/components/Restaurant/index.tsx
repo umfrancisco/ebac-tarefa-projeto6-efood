@@ -11,7 +11,7 @@ type Props = {
     review: number
 }
 
-const Restaurant = ({ id, imgUrl, title, description, infos, review }: Props) => {
+function Restaurant({ id, imgUrl, title, description, infos, review }: Props) {
 
     return (
         <Container>

@@ -6,7 +6,7 @@ import Footer from "../../components/Footer"
 import { useGetRestaurantByIdQuery } from "../../services/api"
 import Cart from "../../components/Cart"
 
-const RestaurantComponent = () => {
+function RestaurantComponent() {
 
     const { id } = useParams()
     const { data: restaurant } = useGetRestaurantByIdQuery(id!)

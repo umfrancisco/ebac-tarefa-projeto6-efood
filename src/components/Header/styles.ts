@@ -34,6 +34,15 @@ export const RestaurantContainer = styled.div`
         font-size: 18px;
     }
 
+    button {
+        border: none;
+        background-color: transparent;
+        font-size: 18px;
+        font-weight: bold;
+        color: ${cores.rosa};
+        cursor: pointer;
+    }
+
     a {
         text-decoration: none;
         color: ${cores.rosa};

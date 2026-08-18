@@ -6,7 +6,7 @@ type Props = {
     onClick: () => void
 }
 
-const Product = ({ onClick, prato }: Props) => {
+function Product({ onClick, prato }: Props) {
 
     const getDescription = (description: string) => {
         if (description.length > 95) {

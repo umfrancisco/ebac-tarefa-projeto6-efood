@@ -24,7 +24,7 @@ export type Restaurant = {
 }
 
 
-const Home = () => {
+function Home() {
 
     const { data: restaurants } = useGetRestaurantsQuery()
     
