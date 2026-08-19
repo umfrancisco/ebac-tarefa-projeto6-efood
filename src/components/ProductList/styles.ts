@@ -1,11 +1,15 @@
 import styled from "styled-components"
-import { cores } from "../../styles"
+import { breakpoints, cores } from "../../styles"
 
 export const Container = styled.div`
     max-width: 1024px;
     width: 100%;
     margin: 0 auto;
     margin-bottom: 120px;
+
+    @media (max-width: ${breakpoints.desktop}) {
+        width: 80%;
+    }
 `
 
 export const List = styled.ul`
@@ -14,6 +18,14 @@ export const List = styled.ul`
     column-gap: 32px;
     margin-top: 56px;
     margin-botttom: 120px;
+
+    @media (max-width: ${breakpoints.desktop}) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+        grid-template-columns: 1fr;
+    }
 `
 
 export const Title = styled.h4`
@@ -28,6 +40,10 @@ export const Text = styled.p`
     padding-top: 16px;
     padding-right: 32px;
     color: ${cores.branco};
+
+    @media (max-width: ${breakpoints.desktop}) {
+        line-height: 18px;
+    }
 `
 
 export const Button = styled.button`
@@ -45,6 +61,11 @@ export const Image = styled.img`
     height: 280px;
     width: 280px;
     object-fit: cover;
+
+    @media (max-width: ${breakpoints.tablet}) {
+        margin: 0;
+        width: 100%;
+    }
 `
 
 export const Modal = styled.div`
@@ -55,6 +76,14 @@ export const Modal = styled.div`
     top: 0;
     margin-top: 210px;
     z-index: 1;
+
+    @media (max-width: ${breakpoints.desktop}) {
+        max-width: 80%;
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+        margin-top: 32px;
+    }
 `
 
 export const ModalContent = styled.div`
@@ -63,6 +92,11 @@ export const ModalContent = styled.div`
 
     &.visible {
         display: flex;
+
+        @media (max-width: ${breakpoints.tablet}) {
+            flex-direction: column;
+            padding: 32px;
+        }
     }
 `
 

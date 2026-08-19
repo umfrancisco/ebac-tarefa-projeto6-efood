@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import backgroundImg from "../../assets/images/Hero.png"
-import { cores } from "../../styles"
+import { breakpoints, cores } from "../../styles"
 
 export const HeaderBar = styled.header`
     background-image: url(${backgroundImg});
@@ -12,6 +12,10 @@ export const Container = styled.div`
     margin: 0 auto;
     text-align: center;
     padding: 40px 0;
+
+    @media (max-width: ${breakpoints.desktop}) {
+        width: 80%;
+    }
 `
 
 export const Title = styled.h2`
@@ -46,5 +50,17 @@ export const RestaurantContainer = styled.div`
     a {
         text-decoration: none;
         color: ${cores.rosa};
+    }
+
+    @media (max-width: ${breakpoints.desktop}) {
+        width: 80%;
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+        flex-direction: column;
+
+        img {
+            margin: 32px 0;
+        }
     }
 `

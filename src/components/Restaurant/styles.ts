@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { cores } from "../../styles"
+import { breakpoints, cores } from "../../styles"
 import { TagButton, TagInfo } from "../Tag/styles"
 
 const borders = `solid 2px ${cores.rosa}`;
@@ -31,6 +31,14 @@ export const Card = styled.section`
     border-bottom: ${borders};
     border-left: ${borders};
     border-right: ${borders};
+
+    @media (max-width: ${breakpoints.desktop}) {
+        height: 300px;
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+        height: 280px;
+    }
 `
 
 export const TitleContainer = styled.div`

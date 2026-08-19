@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { cores } from "../../styles"
+import { breakpoints, cores } from "../../styles"
 
 export const Container = styled.div`
     margin: 0 auto;
@@ -24,4 +24,9 @@ export const Social = styled.div`
 
 export const Text = styled.p`
     padding-bottom: 80px;
+
+    @media (max-width: ${breakpoints.desktop}) {
+        padding-right: 16px;
+        padding-left: 16px;
+    }
 `

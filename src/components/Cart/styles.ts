@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { cores } from "../../styles"
+import { breakpoints, cores } from "../../styles"
 import trashCan from "../../assets/icons/trash-can.svg"
 
 export const Overlay = styled.div`
@@ -69,6 +69,10 @@ export const Sidebar = styled.aside`
     padding-left: 8px;
     padding-right: 8px;
     z-index: 1;
+
+    @media (max-width: ${breakpoints.desktop}) {
+        max-width: 80%;
+    }
 `
 
 export const Button = styled.button`
