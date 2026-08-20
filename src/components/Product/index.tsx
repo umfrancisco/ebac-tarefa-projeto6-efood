@@ -21,8 +21,8 @@ function Product({ onClick, prato }: Props) {
                 <Image src={prato.foto} alt={prato.nome} />
                 <Title>{prato.nome}</Title>
                 <Text>{getDescription(prato.descricao)}</Text>
-                <ButtonContainer>
-                    <Button onClick={onClick}>Adicionar ao carrinho</Button>
+                <ButtonContainer onClick={onClick}>
+                    <Button>Adicionar ao carrinho</Button>
                 </ButtonContainer>
             </div>
         </Card>
