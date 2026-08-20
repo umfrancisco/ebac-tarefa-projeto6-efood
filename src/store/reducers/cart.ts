@@ -4,11 +4,13 @@ import type { Prato } from "../../pages/Home"
 type CartState = {
     items: Prato[]
     isOpen: boolean
+    checkout: number
 }
 
 const initialState: CartState = {
     items: [],
-    isOpen: false
+    isOpen: false,
+    checkout: 0
 }
 
 const cartSlice = createSlice({
@@ -31,9 +33,15 @@ const cartSlice = createSlice({
         },
         close: (state) => {
             state.isOpen = false
+        },
+        forward: (state) => {
+            state.checkout = state.checkout + 1
+        },
+        backward: (state) => {
+            state.checkout = state.checkout - 1
         }
     }
 })
 
-export const { add, remove, open, close } = cartSlice.actions
+export const { add, remove, open, close, forward, backward } = cartSlice.actions
 export default cartSlice.reducer

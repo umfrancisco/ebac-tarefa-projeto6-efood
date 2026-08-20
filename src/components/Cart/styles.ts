@@ -62,6 +62,13 @@ export const TotalPrice = styled.div`
     margin: 16px 0;
 `
 
+export const Checkout = styled.div`
+
+    &.is-hidden {
+        display: none;
+    }
+`
+
 export const Sidebar = styled.aside`
     background-color: ${cores.rosa};
     max-width: 360px;
@@ -83,6 +90,7 @@ export const Button = styled.button`
     max-width: 100%;
     width: 100%;
     padding: 4px 0;
+    margin-bottom: 8px;
 `
 
 export const TrashCan = styled.button`
