@@ -2,6 +2,11 @@ import styled from "styled-components"
 import { breakpoints, cores } from "../../styles"
 import trashCan from "../../assets/icons/trash-can.svg"
 
+type Props = {
+    displayMode?: string
+    maxWidth?: string
+}
+
 export const Overlay = styled.div`
     position: absolute;
     top: 0;
@@ -109,6 +114,7 @@ export const TrashCan = styled.button`
 export const Title = styled.h4`
     margin-top: 32px;
     margin-bottom: 16px;
+    color: ${cores.branco};
 `
 
 export const Form = styled.div`
@@ -117,8 +123,9 @@ export const Form = styled.div`
     margin-bottom: 24px;
 `
 
-export const Row = styled.div`
-    flex: auto;
+export const Row = styled.div<Props>`
+    display: ${props => props.displayMode};
+    column-gap: 24px;
 
     label {
         display: block;
@@ -134,14 +141,10 @@ export const Row = styled.div`
         padding: 8px;
         margin-bottom: 8px;
     }
+`
 
-    &.special-row {
-        display: flex;
-        column-gap: 32px;
-
-        label {
-            display: flex;
-        }
-    }
+export const InputGroup = styled.div<Props>`
+    max-width: ${props => props.maxWidth || "auto"};
+    flex: auto;
 `
 

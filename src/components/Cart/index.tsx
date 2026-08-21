@@ -1,4 +1,4 @@
-import { Button, CartContainer, CartItem, Overlay, Sidebar, TotalPrice, Infos, TrashCan, Checkout, Title, Form, Row } from "./styles"
+import { Button, CartContainer, CartItem, Overlay, Sidebar, TotalPrice, Infos, TrashCan, Checkout, Title, Form, Row, InputGroup } from "./styles"
 import { useDispatch, useSelector } from "react-redux"
 import type { RootReducer } from "../../store"
 import { close, remove, forward, backward } from "../../store/reducers/cart"
@@ -37,7 +37,7 @@ function Cart() {
         dispatch(remove(id))
     }
 
-    return(
+    return (
         <CartContainer className={isOpen ? "is-open" : ""}>
             <Overlay onClick={closeCart}/>
             <Sidebar>
@@ -63,7 +63,7 @@ function Cart() {
                 </Checkout>
 
                 <Checkout className={checkout === 1 ? "" : "is-hidden"}>
-                    <Title style={{ color: "white" }}>Entrega</Title>
+                    <Title>Entrega</Title>
                     <Form>
                         <Row>
                             <label htmlFor="name">Quem irá receber</label>
@@ -77,15 +77,15 @@ function Cart() {
                             <label htmlFor="city">Cidade</label>
                             <input id="city" type="text" />
                         </Row>
-                        <Row className="special-row">
-                            <div>
+                        <Row displayMode="flex">
+                            <InputGroup>
                                 <label htmlFor="cep">CEP</label>
                                 <input id="cep" type="text" />
-                            </div>
-                            <div>
+                            </InputGroup>
+                            <InputGroup>
                                 <label htmlFor="number">Número</label>
                                 <input id="number" type="number" />
-                            </div>
+                            </InputGroup>
                         </Row>
                         <Row>
                             <label htmlFor="addr-add-info">Complemento (opcional)</label>
@@ -97,13 +97,39 @@ function Cart() {
                 </Checkout>
 
                 <Checkout className={checkout === 2 ? "" : "is-hidden"}>
-                    <Title style={{ color: "white" }}>Pagamento - Valor a pagar R$ 190,90</Title>
+                    <Title>Pagamento - Valor a pagar R$ 190,90</Title>
+                    <Form>
+                        <Row>
+                            <label>Nome no cartão</label>
+                            <input type="text" />
+                        </Row>
+                        <Row displayMode="flex">
+                            <InputGroup>
+                                <label htmlFor="cardNumber">Número do cartão</label>
+                                <input id="cardNumber" type="text" />
+                            </InputGroup>
+                            <InputGroup maxWidth="86px">
+                                <label htmlFor="cardCode">CVV</label>
+                                <input id="cardCode" type="number" />
+                            </InputGroup>
+                        </Row>
+                        <Row displayMode="flex">
+                            <InputGroup>
+                                <label htmlFor="expireMonth">Mês de vencimento</label>
+                                <input id="expireMonth" type="number" />
+                            </InputGroup>
+                            <InputGroup>
+                                <label htmlFor="expireYear">Ano de vencimento</label>
+                                <input id="expireYear" type="number" />
+                            </InputGroup>
+                        </Row>
+                    </Form>
                     <Button onClick={goForward}>Continuar</Button>
                     <Button onClick={goBackward}>Voltar</Button>
                 </Checkout>
 
                 <Checkout className={checkout === 3 ? "" : "is-hidden"}>
-                    <Title style={{ color: "white" }}>Pedido realizado</Title>
+                    <Title>Pedido realizado</Title>
                     <Button onClick={goBackward}>Voltar</Button>
                 </Checkout>
                 
