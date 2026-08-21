@@ -91,6 +91,7 @@ export const Button = styled.button`
     width: 100%;
     padding: 4px 0;
     margin-bottom: 8px;
+    cursor: pointer;
 `
 
 export const TrashCan = styled.button`
@@ -104,3 +105,43 @@ export const TrashCan = styled.button`
     bottom: 8px;
     cursor: pointer;
 `
+
+export const Title = styled.h4`
+    margin-top: 32px;
+    margin-bottom: 16px;
+`
+
+export const Form = styled.div`
+    column-gap: 24px;
+    color: white;
+    margin-bottom: 24px;
+`
+
+export const Row = styled.div`
+    flex: auto;
+
+    label {
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    input {
+        width: 100%;
+        background-color: ${cores.branco};
+        border: 1px solid ${cores.branco};
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+
+    &.special-row {
+        display: flex;
+        column-gap: 32px;
+
+        label {
+            display: flex;
+        }
+    }
+`
+
