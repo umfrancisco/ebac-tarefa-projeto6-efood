@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux"
 import Product from "../Product"
 import { Button, CloseButton, Container, Image, List, Modal, ModalContent, Overlay, Text, Title } from "./styles"
 import closeBtn from "../../assets/icons/close.svg"
-import type { Prato } from "../../pages/Home"
 import { add, open } from "../../store/reducers/cart"
 
 type Props = {

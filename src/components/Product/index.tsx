@@ -1,5 +1,4 @@
 import { Card, Image, Title, Text, Button, ButtonContainer } from "./styles"
-import type { Prato } from "../../pages/Home"
 
 type Props = {
     prato: Prato

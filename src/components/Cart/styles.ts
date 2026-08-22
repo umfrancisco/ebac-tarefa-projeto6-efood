@@ -69,6 +69,15 @@ export const TotalPrice = styled.div`
 
 export const Checkout = styled.div`
 
+    > p {
+        color: ${cores.branco};
+        font-size: 14px;
+        line-height: 22px;
+        margin-left: 8px;
+        margin-right: 8px;
+        margin-bottom: 24px;
+    }
+
     &.is-hidden {
         display: none;
     }
@@ -114,6 +123,7 @@ export const TrashCan = styled.button`
 export const Title = styled.h4`
     margin-top: 32px;
     margin-bottom: 16px;
+    margin-left: 8px;
     color: ${cores.branco};
 `
 

@@ -10,7 +10,18 @@ function Cart() {
 
     const { isOpen, items, checkout } = useSelector((state: RootReducer) => state.cart)
     const dispatch = useDispatch()
-    const [purchase, { isSuccess, isLoading }] = usePurchaseMutation()
+    const [purchase, { isSuccess, data }] = usePurchaseMutation()
+
+    const getProducts = () => {
+        const products: Product[] = []
+        for (let i = 0; i < items.length; i++) {
+            products.push({
+                id: items[i].id,
+                price: items[i].preco
+            })
+        }
+        return products
+    }
 
     const form = useFormik({
         initialValues: {
@@ -41,12 +52,7 @@ function Cart() {
         }),
         onSubmit: (values) => {
             purchase({
-                products: [
-                    {
-                        id: 1,
-                        price: 10
-                    }
-                ],
+                products: getProducts(),
                 delivery: {
                     receiver: values.name,
                     address: {
@@ -96,16 +102,10 @@ function Cart() {
         }).format(price)
     }
 
-    const confirmPurchase = () => {
-        if (isSuccess) {
-            goForward()
-        }
-    }
-
     const finishPurchase = () => {
         closeCart()
         resetCount()
-        items.map((item) => removeItem(item.id))
+        items.forEach((item) => removeItem(item.id))
     }
 
     const getTotalPrice = () => {
@@ -217,54 +217,63 @@ function Cart() {
                     <Button type="button" onClick={goBackward}>Voltar para o carrinho</Button>
                 </Checkout>
 
-                <Checkout className={checkout === 2 ? "" : "is-hidden"}>
-                    <Title>Pagamento - Valor a pagar R$ 190,90</Title>
-                    <Form>
-                        <Row>
-                            <InputGroup>
-                                <label htmlFor="cardOwner">Nome no cartão</label>
-                                <input id="cardOwner" type="text" value={form.values.cardOwner} onChange={form.handleChange} onBlur={form.handleBlur}/>
-                                <p>{getErrorMessage("cardOwner", form.errors.cardOwner)}</p>
-                            </InputGroup>
-                        </Row>
-                        <Row displayMode="flex">
-                            <InputGroup>
-                                <label htmlFor="cardNumber">Número do cartão</label>
-                                <input id="cardNumber" type="text" value={form.values.cardNumber} onChange={form.handleChange} onBlur={form.handleBlur}/>
-                                <p>{getErrorMessage("cardNumber", form.errors.cardNumber)}</p>
-                            </InputGroup>
-                            <InputGroup maxWidth="86px">
-                                <label htmlFor="cardCode">CVV</label>
-                                <input id="cardCode" type="number" value={form.values.cardCode} onChange={form.handleChange} onBlur={form.handleBlur}/>
-                                <p>{getErrorMessage("cardCode", form.errors.cardCode)}</p>
-                            </InputGroup>
-                        </Row>
-                        <Row displayMode="flex">
-                            <InputGroup>
-                                <label htmlFor="expireMonth">Mês de vencimento</label>
-                                <input id="expireMonth" type="number" value={form.values.expireMonth} onChange={form.handleChange} onBlur={form.handleBlur}/>
-                                <p>{getErrorMessage("expireMonth", form.errors.expireMonth)}</p>
-                            </InputGroup>
-                            <InputGroup>
-                                <label htmlFor="expireYear">Ano de vencimento</label>
-                                <input id="expireYear" type="number" value={form.values.expireYear} onChange={form.handleChange} onBlur={form.handleBlur}/>
-                                <p>{getErrorMessage("expireYear", form.errors.expireYear)}</p>
-                            </InputGroup>
-                        </Row>
-                    </Form>
-                    <Button type="submit" onClick={confirmPurchase}>Finalizar pagamento</Button>
-                    <Button type="button" onClick={goBackward}>Voltar para a edição de endereço</Button>
-                </Checkout>
-
-                <Checkout className={isLoading ? "" : "is-hidden"}>
-                    <Title>Aguarde um instante...</Title>
-                </Checkout>
-
-                <Checkout className={checkout === 3 && isSuccess ? "" : "is-hidden"}>
-                    <Title>Pedido realizado</Title>
-                    <Button onClick={finishPurchase}>Concluir</Button>
-                </Checkout>
-
+                {isSuccess ? (
+                    <Checkout className={checkout === 2 ? "" : "is-hidden"}>
+                        <Title>Pedido realizado - {data.orderId}</Title>
+                        <p>
+                            Estamos felizes em informar que seu pedido já está em processo de preparação e, em breve, será entregue no endereço fornecido.
+                        </p>
+                        <p>
+                            Gostaríamos de ressaltar que nossos entregadores não estão autorizados a realizar cobranças extras. 
+                        </p>
+                        <p>
+                            Lembre-se da importância de higienizar as mãos após o recebimento do pedido, garantindo assim sua segurança e bem-estar durante a refeição.
+                        </p>
+                        <p>
+                            Esperamos que desfrute de uma deliciosa e agradável experiência gastronômica. Bom apetite!
+                        </p>
+                        <Button onClick={finishPurchase}>Concluir</Button>
+                    </Checkout>
+                ) : (
+                    <Checkout className={checkout === 2 ? "" : "is-hidden"}>
+                        <Title>Pagamento - Valor a pagar {priceFormat(getTotalPrice())}</Title>
+                        <Form>
+                            <Row>
+                                <InputGroup>
+                                    <label htmlFor="cardOwner">Nome no cartão</label>
+                                    <input id="cardOwner" type="text" value={form.values.cardOwner} onChange={form.handleChange} onBlur={form.handleBlur}/>
+                                    <p>{getErrorMessage("cardOwner", form.errors.cardOwner)}</p>
+                                </InputGroup>
+                            </Row>
+                            <Row displayMode="flex">
+                                <InputGroup>
+                                    <label htmlFor="cardNumber">Número do cartão</label>
+                                    <input id="cardNumber" type="text" value={form.values.cardNumber} onChange={form.handleChange} onBlur={form.handleBlur}/>
+                                    <p>{getErrorMessage("cardNumber", form.errors.cardNumber)}</p>
+                                </InputGroup>
+                                <InputGroup maxWidth="86px">
+                                    <label htmlFor="cardCode">CVV</label>
+                                    <input id="cardCode" type="number" value={form.values.cardCode} onChange={form.handleChange} onBlur={form.handleBlur}/>
+                                    <p>{getErrorMessage("cardCode", form.errors.cardCode)}</p>
+                                </InputGroup>
+                            </Row>
+                            <Row displayMode="flex">
+                                <InputGroup>
+                                    <label htmlFor="expireMonth">Mês de vencimento</label>
+                                    <input id="expireMonth" type="number" value={form.values.expireMonth} onChange={form.handleChange} onBlur={form.handleBlur}/>
+                                    <p>{getErrorMessage("expireMonth", form.errors.expireMonth)}</p>
+                                </InputGroup>
+                                <InputGroup>
+                                    <label htmlFor="expireYear">Ano de vencimento</label>
+                                    <input id="expireYear" type="number" value={form.values.expireYear} onChange={form.handleChange} onBlur={form.handleBlur}/>
+                                    <p>{getErrorMessage("expireYear", form.errors.expireYear)}</p>
+                                </InputGroup>
+                            </Row>
+                        </Form>
+                        <Button type="submit">Finalizar pagamento</Button>
+                        <Button type="button" onClick={goBackward}>Voltar para a edição de endereço</Button>
+                    </Checkout>
+                )}
             </Sidebar>
         </CartContainer>
     )

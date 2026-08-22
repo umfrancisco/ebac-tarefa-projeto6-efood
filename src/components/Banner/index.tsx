@@ -1,4 +1,3 @@
-import type { Restaurant } from "../../pages/Home"
 import { Container, MainTitle, Overlay, SecondaryTitle } from "./styles"
 
 type Props = {
