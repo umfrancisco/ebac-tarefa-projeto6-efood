@@ -8,6 +8,8 @@ import { usePurchaseMutation } from "../../services/api"
 
 function Cart() {
 
+    const { isOpen, items, checkout } = useSelector((state: RootReducer) => state.cart)
+    const dispatch = useDispatch()
     const [purchase, { isSuccess, isLoading }] = usePurchaseMutation()
 
     const form = useFormik({
@@ -70,8 +72,6 @@ function Cart() {
         }
     })
 
-    const { isOpen, items, checkout } = useSelector((state: RootReducer) => state.cart)
-    const dispatch = useDispatch()
 
     const resetCount = () => {
         dispatch(reset())
@@ -94,6 +94,12 @@ function Cart() {
             style: "currency",
             currency: "BRL"
         }).format(price)
+    }
+
+    const confirmPurchase = () => {
+        if (isSuccess) {
+            goForward()
+        }
     }
 
     const finishPurchase = () => {
@@ -246,7 +252,7 @@ function Cart() {
                             </InputGroup>
                         </Row>
                     </Form>
-                    <Button type="submit" onClick={goForward}>Finalizar pagamento</Button>
+                    <Button type="submit" onClick={confirmPurchase}>Finalizar pagamento</Button>
                     <Button type="button" onClick={goBackward}>Voltar para a edição de endereço</Button>
                 </Checkout>
 
