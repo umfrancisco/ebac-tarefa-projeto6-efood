@@ -1,7 +1,7 @@
 import { Button, CartContainer, CartItem, Overlay, Sidebar, TotalPrice, Infos, TrashCan, Checkout, Title, Form, Row, InputGroup, Warning } from "./styles"
 import { useDispatch, useSelector } from "react-redux"
 import type { RootReducer } from "../../store"
-import { close, remove, forward, backward, reset } from "../../store/reducers/cart"
+import { close, remove, forward, backward, resetCount } from "../../store/reducers/cart"
 import { useFormik } from "formik"
 import * as Yup from "yup"
 import { usePurchaseMutation } from "../../services/api"
@@ -10,7 +10,7 @@ function Cart() {
 
     const { isOpen, items, checkout } = useSelector((state: RootReducer) => state.cart)
     const dispatch = useDispatch()
-    const [purchase, { isSuccess, data }] = usePurchaseMutation()
+    const [purchase, { isSuccess, data, reset }] = usePurchaseMutation()
 
     const getProducts = () => {
         const products: Product[] = []
@@ -79,8 +79,8 @@ function Cart() {
     })
 
 
-    const resetCount = () => {
-        dispatch(reset())
+    const doResetCount = () => {
+        dispatch(resetCount())
     }
 
     const goForward = () => {
@@ -103,8 +103,9 @@ function Cart() {
     }
 
     const finishPurchase = () => {
+        reset()
         closeCart()
-        resetCount()
+        doResetCount()
         items.forEach((item) => removeItem(item.id))
     }
 
