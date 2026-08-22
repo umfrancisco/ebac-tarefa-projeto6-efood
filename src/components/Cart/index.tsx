@@ -1,7 +1,7 @@
 import { Button, CartContainer, CartItem, Overlay, Sidebar, TotalPrice, Infos, TrashCan, Checkout, Title, Form, Row, InputGroup } from "./styles"
 import { useDispatch, useSelector } from "react-redux"
 import type { RootReducer } from "../../store"
-import { close, remove, forward, backward } from "../../store/reducers/cart"
+import { close, remove, forward, backward, reset } from "../../store/reducers/cart"
 import { useFormik } from "formik"
 import * as Yup from "yup"
 
@@ -41,6 +41,10 @@ function Cart() {
 
     const { isOpen, items, checkout } = useSelector((state: RootReducer) => state.cart)
     const dispatch = useDispatch()
+
+    const resetCount = () => {
+        dispatch(reset())
+    }
 
     const goForward = () => {
         dispatch(forward())
@@ -85,7 +89,10 @@ function Cart() {
 
     return (
         <CartContainer onSubmit={form.handleSubmit} className={isOpen ? "is-open" : ""}>
-            <Overlay onClick={closeCart}/>
+            <Overlay onClick={() => {
+                closeCart()
+                resetCount()
+            }}/>
             <Sidebar>
 
                 <Checkout className={checkout === 0 ? "" : "is-hidden"}>

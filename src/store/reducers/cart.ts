@@ -39,9 +39,12 @@ const cartSlice = createSlice({
         },
         backward: (state) => {
             state.checkout = state.checkout - 1
+        },
+        reset: (state) => {
+            state.checkout = 0
         }
     }
 })
 
-export const { add, remove, open, close, forward, backward } = cartSlice.actions
+export const { add, remove, open, close, forward, backward, reset } = cartSlice.actions
 export default cartSlice.reducer
