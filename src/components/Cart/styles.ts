@@ -17,7 +17,7 @@ export const Overlay = styled.div`
     opacity: 0.7;
 `
 
-export const CartContainer = styled.div`
+export const CartContainer = styled.form`
     position: fixed;
     top: 0;
     left: 0;
@@ -146,5 +146,10 @@ export const Row = styled.div<Props>`
 export const InputGroup = styled.div<Props>`
     max-width: ${props => props.maxWidth || "auto"};
     flex: auto;
+
+    p {
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
 `
 
