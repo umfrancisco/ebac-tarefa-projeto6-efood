@@ -1,11 +1,14 @@
-import { Button, CartContainer, CartItem, Overlay, Sidebar, TotalPrice, Infos, TrashCan, Checkout, Title, Form, Row, InputGroup } from "./styles"
+import { Button, CartContainer, CartItem, Overlay, Sidebar, TotalPrice, Infos, TrashCan, Checkout, Title, Form, Row, InputGroup, Warning } from "./styles"
 import { useDispatch, useSelector } from "react-redux"
 import type { RootReducer } from "../../store"
 import { close, remove, forward, backward, reset } from "../../store/reducers/cart"
 import { useFormik } from "formik"
 import * as Yup from "yup"
+import { usePurchaseMutation } from "../../services/api"
 
 function Cart() {
+
+    const [purchase] = usePurchaseMutation()
 
     const form = useFormik({
         initialValues: {
@@ -35,7 +38,35 @@ function Cart() {
             expireYear: Yup.string().min(4, "O campo precisa ter 4 caracteres").max(4, "O campo precisa ter 4 caracteres").required("O campo é obrigatório"),
         }),
         onSubmit: (values) => {
-            console.log(values)
+            purchase({
+                products: [
+                    {
+                        id: 1,
+                        price: 10
+                    }
+                ],
+                delivery: {
+                    receiver: values.name,
+                    address: {
+                        description: values.address,
+                        city: values.city,
+                        zipCode: values.cep,
+                        number: Number(values.houseNumber),
+                        complement: values.addrAddInfo
+                    }
+                },
+                payment: {
+                    card: {
+                        name: values.cardOwner,
+                        number: values.cardNumber,
+                        code: Number(values.cardCode),
+                        expires: {
+                            month: Number(values.expireMonth),
+                            year: Number(values.expireYear)
+                        }
+                    }
+                }
+            })
         }
     })
 
@@ -85,7 +116,18 @@ function Cart() {
         return ""
     }
 
-    console.log(form.errors)
+    if (items.length === 0) {
+        return (
+            <CartContainer onSubmit={form.handleSubmit} className={isOpen ? "is-open" : ""}>
+            <Overlay onClick={closeCart}/>
+            <Sidebar>
+                <Checkout className={checkout === 0 ? "" : "is-hidden"}>
+                    <Warning>Adicione items ao carrinho para continuar</Warning>
+                </Checkout>
+            </Sidebar>
+        </CartContainer>
+        )
+    }
 
     return (
         <CartContainer onSubmit={form.handleSubmit} className={isOpen ? "is-open" : ""}>

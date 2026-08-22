@@ -153,3 +153,8 @@ export const InputGroup = styled.div<Props>`
     }
 `
 
+export const Warning = styled.p`
+    color: ${cores.branco};
+    margin: 32px 8px;
+`
+
