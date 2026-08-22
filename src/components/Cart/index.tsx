@@ -8,7 +8,7 @@ import { usePurchaseMutation } from "../../services/api"
 
 function Cart() {
 
-    const [purchase] = usePurchaseMutation()
+    const [purchase, { isSuccess, isLoading }] = usePurchaseMutation()
 
     const form = useFormik({
         initialValues: {
@@ -94,6 +94,12 @@ function Cart() {
             style: "currency",
             currency: "BRL"
         }).format(price)
+    }
+
+    const finishPurchase = () => {
+        closeCart()
+        resetCount()
+        items.map((item) => removeItem(item.id))
     }
 
     const getTotalPrice = () => {
@@ -240,13 +246,17 @@ function Cart() {
                             </InputGroup>
                         </Row>
                     </Form>
-                    <Button type="submit">Finalizar pagamento</Button>
+                    <Button type="submit" onClick={goForward}>Finalizar pagamento</Button>
                     <Button type="button" onClick={goBackward}>Voltar para a edição de endereço</Button>
                 </Checkout>
 
-                <Checkout className={checkout === 3 ? "" : "is-hidden"}>
+                <Checkout className={isLoading ? "" : "is-hidden"}>
+                    <Title>Aguarde um instante...</Title>
+                </Checkout>
+
+                <Checkout className={checkout === 3 && isSuccess ? "" : "is-hidden"}>
                     <Title>Pedido realizado</Title>
-                    <Button onClick={goBackward}>Voltar</Button>
+                    <Button onClick={finishPurchase}>Concluir</Button>
                 </Checkout>
 
             </Sidebar>
